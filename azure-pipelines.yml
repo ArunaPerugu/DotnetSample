@@ -10,17 +10,13 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
-
-
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '5.0.100-preview.8.20417.9' 
+    version: '5.0.100-preview.8.20417.9' # specify the preview version
     installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - script: |
@@ -36,4 +32,3 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
   displayName: 'Publish Artifact'
-
